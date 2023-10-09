@@ -48,6 +48,11 @@ for (let i = 0 ; i < slides.length; i++ ){
 	const bullet = document.createElement("p") //Création d'un point enfant
 	ajoutBullets.appendChild(bullet)//ajout a l'élement enfant
 	bullet.classList.add("dot") // ajout d'une class
+
+	if (i === numero){
+		bullet.classList.add('dot_selected')
+	}
+
 	console.log(ajoutBullets)
 }
 
@@ -57,11 +62,11 @@ for (let i = 0 ; i < slides.length; i++ ){
 function majSlide(sens) {
 	numero = numero + sens
 	if (numero > slides.length -1)
-		numero =0
+		numero = 0
 	if (numero < 0)
-		numero = slide.length -1
+		numero = slides.length -1
 	document.querySelector(".banner-img").src = "./assets/images/slideshow/" + slides[numero]['image'] // changement de l'image en fonction du numero
 	document.getElementById("text").innerHTML = slides[numero]['tagLine'] // changement du texte en fonction du numero
-	
+
 	{console.log(sens)}
 }
