@@ -17,11 +17,13 @@ const slides = [
 	}
 ]
 
+let numero =0 // permet d'itentifier le texte et l'image affichés
+
 //écouteur de la flèche gauche
 const leftArrow = document.querySelector(".arrow_left");
 	console.log(leftArrow)
 
-	leftArrow.addEventListener ("click", () => { 
+	leftArrow.addEventListener ("click", function () { majSlide(-1)
 		console.log("j'ai cliqué sur la flèche gauche")
 })
 
@@ -30,9 +32,11 @@ const leftArrow = document.querySelector(".arrow_left");
 const rightArrow = document.querySelector(".arrow_right");
 	console.log(rightArrow)
 
-	rightArrow.addEventListener ("click", () => {
+	rightArrow.addEventListener ("click", function () { majSlide(1)
 		console.log("j'ai cliqué sur la flèche droite")
 })
+
+console.log(slides.length)
 
 // ajout des bullets
 
@@ -42,10 +46,22 @@ const ajoutBullets = document.querySelector(".dots")
 for (let i = 0 ; i < slides.length; i++ ){
 
 	const bullet = document.createElement("p") //Création d'un point enfant
-	ajoutBullets.appendChild(bullet)//ajout a l'élement parent
+	ajoutBullets.appendChild(bullet)//ajout a l'élement enfant
 	bullet.classList.add("dot") // ajout d'une class
-	 
-	if (i === 3){
-		bullet.classList.add("dot_selected") //afficher le point blanc sur le bon bullet + encore modifier par la suite la valeur i
-	}
+	console.log(ajoutBullets)
+}
+
+
+// fonction pour l'image et le texte
+
+function majSlide(sens) {
+	numero = numero + sens
+	if (numero > slides.length -1)
+		numero =0
+	if (numero < 0)
+		numero = slide.length -1
+	document.querySelector(".banner-img").src = "./assets/images/slideshow/" + slides[numero]['image'] // changement de l'image en fonction du numero
+	document.getElementById("text").innerHTML = slides[numero]['tagLine'] // changement du texte en fonction du numero
+	
+	{console.log(sens)}
 }
