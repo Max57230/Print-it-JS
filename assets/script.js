@@ -37,35 +37,38 @@ let dots =[]
 			dots.push(dot) // ajout de valeur au tableau
 		
 		}
-
+		console.log(dots) // voir si mon tableau de dot est bon
 // fonction pour changer le slide
 
-const imageSlide = document.querySelector('.banner-img')
-const texteSlide = document.querySelector('#text')
+const imageSlide = document.querySelector('.banner-img') // const pour le changement de l'image
+const texteSlide = document.querySelector('#text') // const pour le changement du texte
 
 
 let slideIndex = changementSlide ( 0, 0)
 
 function changementSlide (slideSuivant, slideAvant){
 
-	if ( slideSuivant < 0 ) {slideSuivant = dots.length -1}
-	if ( slideSuivant > dots.length -1) {slideSuivant = 0}
+	if ( slideSuivant < 0 ) {slideSuivant = dots.length -1} // lorsque le nombre est infèrieur a 0 ca m'affiche 
+	if ( slideSuivant > dots.length -1) {slideSuivant = 0} // si le nombre est supèrieur au nombre de dots alors retourne au début
 
-	texteSlide.innerHTML = slides[slideSuivant].tagLine
-	imageSlide.src = `./assets/images/slideshow/${slides[slideSuivant].image}`
+	console.log(slideSuivant)
+	console.log(dots.length)
 
-	dots[slideAvant].classList.remove('dot_selected')
-	dots[slideSuivant].classList.add('dot_selected')
+	texteSlide.innerHTML = slides[slideSuivant].tagLine  // changement du texte du caroussel
+	imageSlide.src = `./assets/images/slideshow/${slides[slideSuivant].image}` // changement de l'image du caroussel
 
-	return slideSuivant  // retour de l'index actu
+	dots[slideAvant].classList.remove('dot_selected') // permet de retirer la class 
+	dots[slideSuivant].classList.add('dot_selected') // permet d'ajouté la class
+
+	return slideSuivant  // retour de l'index actuel
 }
 
 //écouteur de la flèche gauche + maj au changement de slide
-const leftArrow = document.querySelector(".arrow_left");
+const leftArrow = document.querySelector(".arrow_left"); // création de la const pour la flèche de gauche
 	console.log(leftArrow)
 
 
-	leftArrow.addEventListener ("click", (event) => {
+	leftArrow.addEventListener ("click", (event) => {	//lors du click permet le changement de  slide vers la gauche
 		if (event.button === 0) {
 			slideIndex = changementSlide ( slideIndex -1 , slideIndex)
 		}
@@ -74,10 +77,10 @@ const leftArrow = document.querySelector(".arrow_left");
 
 
 //écouteur de la flèche droite + maj au changement de slide
-const rightArrow = document.querySelector(".arrow_right");
+const rightArrow = document.querySelector(".arrow_right"); // création de la const pour la flèche de droite
 	console.log(rightArrow)
 
-	rightArrow.addEventListener ("click", (event) => {
+	rightArrow.addEventListener ("click", (event) => { //lors du click permet le changement de  slide vers la droite
 		if (event.button === 0) {
 			slideIndex = changementSlide ( slideIndex +1 , slideIndex)
 		}
